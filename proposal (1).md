@@ -26,16 +26,21 @@
 
 ### In a sentence (or list of features), define a GOOD outcome for your final project. I.e., what WILL you accomplish no matter what?
 
+- A flowing plot with no plotholes
+- "Choose your path" storyline questions
 - Creating well-defined challenges/quests
   - Continuous challenges to keep users hooked
 
 ### In a sentence (or list of features), define a BETTER outcome for your final project. I.e., what do you THINK you can accomplish before the final project's deadline?
 
 - Art & Graphics for the game
+- 
 
 ### In a sentence (or list of features), define a BEST outcome for your final project. I.e., what do you HOPE to accomplish before the final project's deadline?
 
 - Good flow
+- Complete graphics, including the character and the background design of the game.
+- Maybe background music or sounds (if possible)
 
 
 ## In a paragraph or more, outline your next steps. What new skills will you need to acquire? What topics will you need to research? If working with one of two classmates, who will do what?
