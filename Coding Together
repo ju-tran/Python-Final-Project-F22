@@ -7,10 +7,9 @@ scene closed
     mv "Hey."
     mv "Wake up!"
     mv "{b}WAKE UP!{/b}"
-    show pe 
+    show pr1
     pause 
     "W-w-who are you?"
-    mv "Hello test 1"
     mv "Hello my name is Prof Rosen."
     mv ""
     mv "What's your name?"
