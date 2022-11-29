@@ -1,0 +1,22 @@
+# Lines 1-22 Script Tab
+define mv = Character("Mysterious Voice")
+
+label start:
+scene closed
+    pause
+    mv "Hey."
+    mv "Wake up!"
+    mv "{b}WAKE UP!{/b}"
+    show pe 
+    pause 
+    "W-w-who are you?"
+    mv "Hello test 1"
+    mv "Hello my name is Prof Rosen."
+    mv ""
+    mv "What's your name?"
+    
+    pause
+    $ y = renpy.input("Tell him your name!")
+    if y == "":
+        "Tell us your name!"
+return
