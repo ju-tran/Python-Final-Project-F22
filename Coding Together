@@ -1,4 +1,4 @@
-# Lines 1-22 Script Tab
+# Lines 1-23 Script Tab
 define mv = Character("Mysterious Voice")
 
 label start:
@@ -10,6 +10,8 @@ scene closed
     show pr1
     pause 
     "W-w-who are you?"
+    hide pr1
+    show pr2
     mv "Hello my name is Prof Rosen."
     mv ""
     mv "What's your name?"
@@ -19,3 +21,4 @@ scene closed
     if y == "":
         "Tell us your name!"
 return
+
