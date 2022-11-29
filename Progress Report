@@ -22,13 +22,18 @@ Short answers for the below questions suffice. If you want to alter your plan fo
 
 ## What have you done for your project so far?
 
-At the moment, we have completed getting images for characters and backgrounds. We have also made a start page. 
+- At the moment, we have completed getting images for characters and backgrounds. We have also made a start page. In other words, we have gotten the artwork required for the storyline located in the image folder via Renpy. 
+- For the characters, we decided to create our own using a website that allows us to generate our own anime characters. 
+- For our backgrounds, we will be using Google images and our own drawings. 
+- For our start page/GUI, we do not have a final copy just yet. Since it is the first impression for the users/gamers, we want to make a good impression and have the characteristics of the game to be what we want for it, mysterious and fun. 
 
 ## What have you not done for your project yet?
 
-- We are still currently creating the storyline and the character's choices. We still need to figure out how to allow the user/gamer to make the decisions.
+- We are still currently creating the chronological order of the storyline and the character's choices. We still need to figure out how to allow the user/gamer to make the decisions.
 - We are also need to figure out how to add sounds for the gameplay.
 
 ## What problems, if any, have you encountered?
 
 We are having problems with transition and like we stated above, how to allow the user/gamer to make decisions with different inputs. 
+We have also encountered an error of the deletion of our repository. With Professor Rosen's help, we were able to recover our project.
+- We have also created a clone of the repository in the meantime for future unexpected events. 
