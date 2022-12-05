@@ -1,1 +1,438 @@
+# The script of the game goes in this file.
+
+# Declare characters used by this game. The color argument colorizes the
+# name of the character.
+
+define mv = Character("Mysterious Voice")
+define pr = Character("Professor Rosen")
+define you = Character("YOU")
+define x = Character("Ms. Xinwen Z")
+define b = Character("Mr. Bin L")
+define j = Character("Julia")
+define s = Character("Shayna")
+define a = Character("Alan")
+default selection = "none"
+# The game starts here.
+
+label start:
+    play sound "audio/sea.mp3"  
+
+    # Show a background. This uses a placeholder by default, but you can
+    # add a file (named either "bg room.png" or "bg room.jpg") to the
+    # images directory to show it.
+
+    scene closed
+    pause
+    mv "Hey."
+    mv "Wake up!"
+    mv "{b}WAKE UP!{/b}"
+    scene beach
+    show pr1
+    pause 
+    you "W-w-who are you?"
+    hide pr1
+    show pr2
+    pr "Hello my name is Prof Rosen."
+    pr "What's your name?"
+    
+    $ y = renpy.input("Tell him your name!")
+    if y == "":
+        "Tell us your name!"
+    
+    hide pr1
+    show pr2
+    pr "Nice to meet you [y]"
+    pr "I don't suppose you're from around here."
+    menu:
+      "How will you respond?"
+      "How did you know?":
+        jump trust
+      "Pshhh, I am so from around here.":
+        jump no_trust
+
+label trust:
+  "You decided to trust Prof Rosen. He will remember this."
+  hide pr2
+  show pr1 
+  pr "I could tell"
+  hide pr1
+  show pr3 
+  pr "But welcome to Python Island, where the days are full and the nights are serene."
+  pr "An island where no one can hear you scream."
+  pr "{i} OooHooooHooohoo {/i}"
+  hide pr3
+  show pr2 
+  pr "Enough talking."
+  pr "I am here to help you get off this island because obviously, you're not from here."
+  you "Thank god"
+  hide pr2
+  show pr3
+  pr "Here's your first challenge to get off Python!"
+  menu:
+    "It's game time!"
+    "I am so ready!":
+      jump game1
+    "On second thought, I need a recap of this whole conversation":
+      jump start
+label no_trust:
+  "You decided not to trust Prof Rosen. He will remember this."
+  pr "Yeah right. No one just lies on the beach in drenched and ripped clothes."
+  pr "If you're from here, what's the island name?"
+  "Oh man. He's testing me."
+  menu:
+    "How will you respond?"
+    "Ummmm":
+     jump quiet
+    "Java Island, duh":
+      jump answer
+
+label answer: 
+  "Really? Java over Python, c'mon now. He will remember this."
+  pr "No, it's Python Island, intruder."
+  play sound "audio/death.mp3"  
+  menu:
+    "You're dead because you were seen as an intruder. Try again?"
+    "Nahh, I'm good":
+      return
+    "I'll do better this time.":
+      jump start 
+
+label quiet:
+  "You did not know the answer. He will remember this."
+  pr "Mhmmm, anywho."
+  hide pr2
+  show pr3 
+  pr "Welcome to Python Island, where the days are full and the nights are serene."
+  pr "An island where no one can hear you scream."
+  pr "{i} OooHooooHooohoo {/i}"
+  pr "Enough talking."
+  pr "I am here to help you get off this island because obviously, you're not from here."
+  you "Thank god"
+  pr "Here's your first challenge to get off Python!"
+  pr "Are you ready?"
+  menu:
+    "It's game time!"
+    "I am so ready!":
+      jump game1
+    "On second thought, I need a recap of this whole conversation":
+      jump start
+
+label game1:
+  "{i}You have accepted the first challenge!{/i}"
+  pr "Okay, do not be nervous. This is one of the many challenges you will face."
+  you "What is it?"
+  hide pr3
+  show pr2 
+  pr "This is a challenge that is known to all mankind."
+  you "Wrestling? Arm Wrestling?"
+  hide pr2 
+  show pr3
+  pr "ROCK PAPER SCISSORS"
+  "{i}You look at Professor Rosen in disbelief.{/i}"
+  hide pr3 
+  show pr5
+  pr "Don't give me that face."
+  hide pr5
+  show pr3 
+  pr "Anywho, if you beat me, you will be face with more challenges as you attempt to escape."
+  pr "Remember...it's not about power. It's about skills."
+  pr "Let's get started shall we?"
+  stop sound
+  play sound "audio/battle.mp3"  
+  jump rps 
+
+label rps:
+  menu:
+    "Rock":
+      $selection = "rock"
+      $result = renpy.random.choice(['rock', 'paper', 'scissors'])
+      jump rr
+    "Paper":
+      $selection = "paper"
+      $result = renpy.random.choice(['rock', 'paper', 'scissors'])
+      jump rp
+    "Scissors":
+      $selection = "scissors"
+      $result = renpy.random.choice(['rock', 'paper', 'scissors'])
+      jump rs
+    
+label rr:
+  pr "I chose paper! I WIN!"
+  "Try again?"
+  jump rps 
+
+label rp:
+  pr "I chose paper! One more time!"
+  jump rps
+
+label rs:
+  pr "I chose paper!"
+  hide pr3
+  show pr5 
+  "{i} You beat Professor Rosen! You get to move on to the next challenge. {/i}"
+  "{i} But first, say your goodbyes to him!"
+  jump g1w
+
+label g1w:
+  stop sound 
+  play sound "audio/win.mp3"
+  pr "Ughh! I can't believe you beat me!"
+  hide pr5
+  show pr3 
+  pr "I hope you get off this island soon! Good luck to you and you future endeavors, [y]."
+  jump part2
+
+label part2:
+  hide pr3
+  play sound "audio/forest.mp3"
+  scene closed
+  pause
+  scene cave
+  you "{i} That Professor Rosen was an interesting dude. {/i}"
+  you "{i} It is a bit weird that he was wearing a suit on this island though. {/i}"
+  you "{i} Whatever, I really need to get off this island.{/i}"
+  mv "Hey, you're not from around here are you?"
+  stop sound
+  you "Who's there!?"
+  show x2 
+  x "Oops, didn't mean to scare you!"
+  hide x2
+  show x4
+  play sound "audio/xlaugh.mp3"
+  x "You should've seen the look on your face! It's like you saw a ghost or something"
+  hide x4
+  show x5
+  x "You shouldn't be walking around here if you have no idea where you're going."
+  you "Not to be rude, but who are you?"
+  play sound "audio/forest2.mp3"
+  hide x5
+  show x4
+  x "Where are my manners? I'm Xinwen."
+  x "I saw you got into a heated {i} Rock, Paper, Scissors {/i} match with Prof."
+  x "He's really good. I'm impressed you were able to beat him."
+  menu:
+    "Yeah, he's really good.":
+      jump good
+    "I really need to get out of here.":
+      jump avoidance
+
+label good:
+  x "Yeah, ever since I've met Prof, I've never beaten him. Kudos to you!"
+  jump avoidance
+
+label avoidance:
+  x "So what brings you to Python?"
+  you "I have no idea. I woke up and I found myself on the beach with Professor Rosen."
+  hide x4
+  show x2
+  x "Interesting."
+  x "Well, you're in luck. I know a secret."
+  x "Do you want to know the secret?"
+  you "{i} Secret? Professor Rosen didn't tell me any secrets. {/i}"
+  menu:
+    "Do you want to know the secret?"
+    "Tell me the secret":
+      jump secret
+    "I already know the secret.": 
+      jump know
+
+label know: 
+  x "Prof warned me that you were a bit know-it-all."
+  x "What's the Island's name?"
+  menu:
+    "Python":
+      jump correct1
+    "Java":
+      jump wrong1
+
+label wrong1:
+  x "{i} She looks at you in disbelief. {/i}"
+  x "Python, I literally said a few minutes ago."
+  "You're choosing Java over Python at any possibility you can get, huh?"
+  "Try again."
+  jump part2 
+
+label correct1:
+  x "Who is Ada Lovelace?"
+  menu:
+    "Who?":
+      jump wrong2
+    "The first female coder.":
+      jump correct2
+
+label wrong2:
+  x "{i} She looks at you in disbelief. {/i}"
+  "Yo, we learned about Ada Lovelace in the beginning of the semester...disappointed."
+  "Try again."
+  jump part2
+
+label correct2:
+  x "Hmmm, so maybe you are a know-it-all."
+  x "I'm still going to tell you the secret."
+  jump secret
+
+
+label secret:
+  stop sound 
+  play sound "audio/lullaby.mp3"  
+  hide x2
+  show x1
+  x "There is a way to get off this Python Island and guess what?"
+  x "You're 1/3 of the way to getting off this Island."
+  you "WHAT? HOW?"
+  x "Well, you see."
+  x "In order to get off this island, you need to complete mini challenges."
+  x "These challenges were created to see if you are worthy to live."
+  you "Who created these challenges?"
+  x "No one knows."
+  hide x1
+  show x5
+  x "I was like you."
+  x "I was also stranded on the island."
+  x "However, I did not pass the challenges."
+  x "That's why I am still stuck here."
+  menu:
+    "Why aren't you trying anymore?":
+      jump question
+    "Oh no. Will I be stuck here forever?":
+      jump denial
+
+label question:
+  x "I gave up."
+  you "No, you can't give up."
+  jump denial 
+
+label denial:
+  x "You did the first challenge with Professor Rosen."
+  x "You may still have a chance."
+  hide x5
+  show x1 
+  x "Get out here for all of us. We will be happy that one got out alive."
+  jump game2
+
+label game2:
+  hide x1
+  show x4
+  x "Are you ready for the next challenge?"
+  menu:
+    "Yes":
+      jump game2y
+    "No, I need another recap.":
+      jump part2 
+
+label game2y:
+  stop sound 
+  play sound "audio/battle.mp3"
+  scene grouping
+  pause
+  "Drag the rocks to their correct element."
+  jump g2w
+  
+label g2w:
+  stop sound
+  play sound "audio/win.mp3"
+  scene cave 
+  show x4 
+  x "You actually passed the second challenge."
+  x "You are so close to escaping the Island."
+  x "The last challenge will be given by Bin."
+  x "I believe in you. Good luck."
+  jump part3
+
+label part3:
+  play sound "audio/forest2.mp3"
+  scene closed
+  pause
+  scene forest
+  you "{i}I'm almost out of here. One more challenge to go.{/i}"
+  mv "What's up [y]!"
+  show b2
+  b "You made it to final challenge."
+  b "No one has made it this far."
+  you "You must be Mr. Bin. Ms. Xinwen told me you would be giving me the last challenge."
+  hide b2
+  show b4
+  b "She is correct."
+  you "I am ready."
+  b "I bet you are."
+  b "I won't beat around the bush."
+
+label part3a:
+  b "Let's get right into it!"
+  menu:
+    "Are you ready for the last challenge?"
+    "I have never been more prepared.":
+      jump game3
+    "I need a breather.": 
+      hide b4 
+      show b5
+      jump breaktime
+
+label breaktime:
+  hide b5
+  show b4 
+  b "All good."
+  b "Take as long as you need."
+  hide b4 
+  play sound "audio/snore.mp3"
+  scene closed
+  scene forest
+  "{i}5 minutes later"
+  show b4 
+  b "Are you ready now?"
+  b "If so...."
+  stop sound
+  jump part3a
+
+label game3:
+  play sound "audio/battle.mp3"  
+  scene closed
+  pause
+  "Drag to the right area "
+  jump g3w
+
+
+label g3w:
+  stop sound 
+  scene forest
+  pause
+  show b4 
+  play sound "audio/win.mp3"
+  b "Wow. you've been the first person who has completed all three challenges."
+  b "You have successfully achieved your mission of escaping the Island."
+  b "Follow the path up there and you will be redirected to the mountain, where a team will rescue you."
+  b "Thanks for playing these challenges with us. You have given us hope to fight."
+  b "Good luck and try not to get stranded here again."
+  jump final
+
+label final:
+  play sound "audio/finale.mp3"
+  scene closed
+  pause
+  scene mountain
+  show jt1
+  j "Hey you"
+  hide jt1
+  show s1
+  s "Are you [y]?"
+  you "Yeah I am!"
+  hide s1
+  show a1
+  a "Congratulations! You survived!"
+  hide a1
+  show jt1 
+  j "You evolved..."
+  hide jt1
+  show s1
+  s "to survive!"
+  hide s1
+  show a1 
+  a "C'mon, let's get out of here!"
+  hide a1 
+  you "I did it."
+  you "I'm going home."
+  scene closed
+  pause
+
+ 
 
