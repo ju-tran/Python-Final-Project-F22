@@ -56,7 +56,7 @@ label start:
     $ y = renpy.input("Tell him your name!")
     if y == "":
         "Tell us your name!"
-    
+     
     hide pr1
     show pr2
     pr "Nice to meet you [y]"
