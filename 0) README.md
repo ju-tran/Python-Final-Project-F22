@@ -1,5 +1,10 @@
 # FinProj-F22
 
+MEMBERS:
+- Alan Bounchanavong, Year 3
+- Shayna Odle, Year 3
+- Julia Tran, Year 3
+
 VIDEO FOR FINAL PROJECT
 https://youtu.be/GqRdB5CgiSI
 
