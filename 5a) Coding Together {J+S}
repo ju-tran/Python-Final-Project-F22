@@ -387,6 +387,98 @@ label part3:
   c1side "I am ready."
   b "I bet you are."
   b "I won't beat around the bush."
+  you "Where are we?"
+  b "We're in the forest."
+  you "I'm awfully hungry, but I have no idea what I'm able to eat."
+  b "That leads me to your next challenge, let's see how much you know about forest fruit."
+  you "Hmm, when I look closely there's that cherry over there on that tree.. but then there's also that kiwi over there across the lake."
+  you "The kiwi would be more filling but I'd have to risk crossing the lake to get it. Who knows what's in those waters."
+  you "I think I should be very careful with choosing the fruit. I wouldn't wanna get posioned."
+  b "Drag the fruit you choose onto the hand."
+  call screen tree
+  if fruit == "cherry":
+     c1side "I feel dizzy"
+        jump cherry
+    elif fruit == "kiwi":
+        c1side "Mmm, that was actually really good!"
+        jump kiwi
+  label cherry:
+    scene blurryforest
+    you "What's happening?"
+    b "Htaw rae uyo taklign abuot?"
+    you "Huh?"
+    b "Hooo, yuo pikced teh wrogn friut! I thouogt yuo kenw waht yuo were diong!"
+    you "*Why is it so hard to understand him right now?*"
+    b "Pcik teh corerct anitdoet and yuo will retrun to nromal."
+    you "...The correct antidote? Oh! I know what he's saying now."
+    b "Drag the correct antidote onto the hand"
+    call screen antidote
+    if fruit == "antidoteblur":
+        you "Woo, I feel so much better now!"
+        jump g3w
+    elif fruit == "poison":
+        jump cherry
+    
+    
+    screen antidote:
+    draggroup:
+        drag:
+            drag_name "antidote"
+            child "antidoteblur.png"
+            xpos 1500
+            ypos 500
+            draggable True
+            droppable False
+            dragged drag_placed
+            drag_raise True
+        drag:
+            drag_name "poison"
+            child "poison.png"
+            xpos 1500
+            ypos 500
+            draggable True
+            droppable False
+            dragged drag_placed
+            drag_raise True
+        drag:
+            drag_name "hand"
+            child "hand.png"
+            xpos 650
+            ypos 500
+            draggable False
+            droppable True
+            drag_raise True
+   
+  screen tree:
+    draggroup:
+        drag:
+            drag_name "cherry"
+            child "cherry.png"
+            xpos 400
+            ypos 300
+            draggable True
+            droppable False
+            dragged drag_placed
+            drag_raise True
+        drag:
+            drag_name "kiwi"
+            child "kiwi.png"
+            xpos 1500
+            ypos 500
+            draggable True
+            droppable False
+            dragged drag_placed
+            drag_raise True
+        drag:
+            drag_name "hand"
+            child "hand.png"
+            xpos 650
+            ypos 500
+            draggable False
+            droppable True
+            drag_raise True
+  
+  
 
 label part3a:
   b "Let's get right into it!"
